@@ -12,7 +12,7 @@
     "eslint": "eslint '**/*.js' || exit 0",
     "test": "concurrently \"npm run build\" \"npm run start\""
   },
-  "author": "MOAT",
+  "author": "csr",
   "license": "ISC",
   "dependencies": {
     "puppeteer": "^1.20.0",
