@@ -34,13 +34,17 @@ async function vote() {
       fbBox.click();
     }
   });
+  const msg = page.evaluate(()=>{
+        return document.querySelector('p[id=vote_msg]').innerText;
+    });
  try {
     await page.waitForFunction("document.querySelector('p[id=vote_msg]').innerText.includes('Thank You')");
-    console.log(`Voted Successfully by ${fullName}`);
+    console.log(`Voted Successfully by ${fullName} - ${msg}`);
   } catch (e) {
-    console.log(`Vote Un-Successfully by ${fullName}`);
+    
+    console.log(`Vote Un-Successfully by ${fullName} - ${msg}`);
   }
-  await page.screenshot({ path: "./image.jpg", type: "jpeg" });
+  //await page.screenshot({ path: "./image.jpg", type: "jpeg" });
   browser.close();
 }
 
