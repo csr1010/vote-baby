@@ -46,7 +46,9 @@ async function vote() {
 
 (async function () {
   try{
+    console.log("started..........")
       await vote();
+    console.log("finished..........")
   } catch(e) {
      console.log(e.message)
   }
