@@ -34,7 +34,7 @@ async function vote() {
       fbBox.click();
     }
   });
-  const msg = page.evaluate(()=>{
+  const msg = await page.evaluate(()=>{
         return document.querySelector('p[id=vote_msg]').innerText;
     });
  try {
