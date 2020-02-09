@@ -28,14 +28,18 @@ async function vote() {
     }
   });
   await delay(5000);
-  await page.evaluate(() => {
+ await page.evaluate(() => {
+    const fbBox = document.querySelector("fb-close");
     if (fbBox) {
       fbBox.click();
     }
-    const fbBox = document.querySelector("fb-close");
   });
-  await page.waitForFunction("document.querySelector('p[id=vote_msg]').innerText.includes('Thank You')");
-  console.log(`Voted Successfully by ${fullName}`);
+ try {
+    await page.waitForFunction("document.querySelector('p[id=vote_msg]').innerText.includes('Thank You')");
+    console.log(`Voted Successfully by ${fullName}`);
+  } catch (e) {
+    console.log(`Vote Un-Successfully by ${fullName}`);
+  }
   await page.screenshot({ path: "./image.jpg", type: "jpeg" });
   browser.close();
 }
@@ -47,5 +51,5 @@ async function vote() {
      console.log(e.message)
   }
 
-});
+})();
 
